@@ -1,0 +1,17 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<html dir="rtl">
+<div style="text-align: right">
+  <button class="btn btn-lg btn-secondary" [routerLink]="['/product-list']">لیست محصولات</button>
+  <button class="btn btn-lg btn-primary" [routerLink]="['/product-add']">ایجاد کالا</button>
+  <button class="btn btn-lg btn-primary" [routerLink]="['/order-list']">لیست سفارشات</button>
+  <button class="btn btn-lg btn-primary" [routerLink]="['/user-list']">لیست کاربران</button>
+</div>
+<main class="main">
+
+  <!-- Breadcrumb -->
+
+  <div class="container-fluid">
+    <router-outlet></router-outlet>
+  </div><!-- /.conainer-fluid -->
+</main>
+</html>

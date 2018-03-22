@@ -1,0 +1,29 @@
+<div class="card-body table-responsive" style="direction: rtl;text-align: right;">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>عنوان</th>
+      <th>تصویر</th>
+      <th>اصلاح</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items">
+      <th scope="row">#</th>
+      <td>{{item.title}}</td>
+      <img src="{{item.fileSource}}" style="max-width: 100px" class="img-rounded">
+      <td><button class="btn btn-lg btn-primary" [routerLink]="['/product-edit', item.id]">اصلاح</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!--<mat-list>
+  <mat-list-item *ngFor="let item of items">
+    <span>
+      {{item.title}}
+    </span>
+
+
+  </mat-list-item>
+</mat-list>-->
