@@ -1,11 +1,18 @@
-import {Product} from './Product';
-import {SystemUsers} from './SystemUsers';
-import {Category} from './Category';
-export class ProductOrder {
-  public id: number;
-  public product: Product;
-  public user: SystemUsers;
-  public orderDate: String;
-  public orderTime: String;
-  public orderStatus: Category;
+import {Product} from "./product";
+import {SystemUsers} from "./systemUsers";
+import {Category} from "./category";
+import {UserOrder} from "./userOrder";
+/**
+ * Created by Mohamad on 3/22/2018.
+ */
+export interface ProductOrder{
+  id: number;
+  product: Product;
+  user: SystemUsers;
+  orderDate: string;
+  orderTime: string;
+  orderStatus: Category;
+  userOrder: UserOrder;
+  qty: number;
+  totalPrice: number;
 }
