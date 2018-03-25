@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
-import {Product} from '../model/Product';
+import {Product} from '../model/product';
 
 @Injectable()
 export class ProductserviceService {

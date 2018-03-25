@@ -1,3 +1,93 @@
-<p>
-  productedit works!
-</p>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+  </div>
+  <div class="panel-body">
+    <form [formGroup]="angForm" novalidate >
+      <div class="form-group">
+        <label class="col-md-4">کد کالا</label>
+        <input type="text" class="form-control" formControlName="productCode" #productCode [(ngModel)]="newProduct.productCode"/>
+      </div>
+      <div
+        *ngIf="angForm.controls['productCode'].invalid && (angForm.controls['productCode'].dirty || angForm.controls['productCode'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="angForm.controls['productCode'].errors.required">کد کالا اجباری می باشد.</div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">عنوان کالا</label>
+        <input type="text" class="form-control" formControlName="name" #name [(ngModel)]="newProduct.name"/>
+      </div>
+      <div
+        *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="angForm.controls['name'].errors.required">عنوان کالا اجباری می باشد.</div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">قیمت کالا</label>
+        <input type="text" class="form-control" formControlName="cost" #cost [(ngModel)]="newProduct.cost"/>
+      </div>
+      <div
+        *ngIf="angForm.controls['cost'].invalid && (angForm.controls['cost'].dirty || angForm.controls['cost'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="angForm.controls['cost'].errors.required">قیمت کالا اجباری می باشد.</div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">شرح کالا</label>
+        <textarea class="form-control" formControlName="description" #description
+                  [(ngModel)]="newProduct.description"></textarea>
+
+      </div>
+      <div
+        *ngIf="angForm.controls['description'].invalid && (angForm.controls['description'].dirty || angForm.controls['description'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="angForm.controls['description'].errors.required">شرح کالا اجباری می باشد.</div>
+      </div>
+      <div class="form-group">
+        <button [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary" (click)="saveProduct()">ثبت
+        </button>
+      </div>
+      <div class="form-group">
+        <table width="100%">
+          <tr>
+            <td style="width:30%;vertical-align: top;">
+              <button class="btn btn-primary" (click)="addNewPicture()">افزودن تصویر</button>
+              <table>
+                <tr *ngFor="let imgs of newProduct.productImages; let i = index">
+                  <td>
+                    <input type="file" id="productImage" name="productImage" formControlName="productImage" (change)="uploadImageService.fileChangeEvent($event)"
+                           #productImage /></td>
+                  <td>
+                  </td>
+                  <td>
+                    <button class="alert-danger" (click)="clearImage(i)">حذف</button>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td style="width:30%;vertical-align: top;">
+              <button class="btn btn-primary" (click)="addNewProperties()">افزودن مشخصات</button>
+              <table>
+                <tr *ngFor="let properties of newProduct.productProperties; let i = index">
+                  <td>
+                    <input type="text" class="form-control" formControlName="productProperties" #productProperties
+                           id="productProperties" name="productProperties" [(ngModel)]="properties.value"
+                           (change)="addProductDescription($event,i)"/>
+                  </td>
+                  <td>
+                    <button class="alert-danger" (click)="clearProperty(i)">حذف</button>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td style="width:30%;vertical-align: top;">
+              <div *ngFor="let type of productTypes; let i = index">
+                <input value="{{ type.id }}" type="radio" name="productType" formControlName="productType"
+                       #productType [(ngModel)]="newProduct.category.id">
+                {{ type.categoryName }}
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </div>
+</div>

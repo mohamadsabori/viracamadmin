@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {ProductOrder} from '../model/ProductOrder';
+import {ProductOrder} from '../model/productOrder';
 
 @Injectable()
 export class OrderServiceService {

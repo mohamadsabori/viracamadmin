@@ -18,10 +18,11 @@ export class UploadImageService {
         console.log(error);
       }
     );
+    this.filesToUpload = [];
   }
 
   fileChangeEvent(fileInput: any) {
-    this.filesToUpload = <Array<File>> fileInput.target.files;
+    this.filesToUpload.push(fileInput.target.files[0]);
   }
 
   makeFileRequest(url: string, params: Array<string>, files: Array<File>) {

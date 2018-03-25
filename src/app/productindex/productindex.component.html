@@ -1,18 +1,24 @@
 <table class="table table-hover">
   <thead>
   <tr>
+    <td>کد</td>
     <td>عنوان</td>
     <td>قیمت</td>
-    <td colspan="2">Actions</td>
+    <td>تصویر</td>
+    <td colspan="2">عملیات</td>
   </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let product of products">
+    <td>{{ product.productCode }}</td>
     <td>{{ product.name }}</td>
     <td>{{ product.cost }}</td>
-    <td><a [routerLink]="['/edit', product.id]" class="btn btn-primary">اصلاح</a></td>
-    <td><a routerLink="" class="btn btn-danger">Delete</a></td>
+    <td><img width="100px" src="{{ product.productImages.length !=0 ? 'http://localhost:8080/ViraCamServer/product/files?id=' + product.id +
+      '&filename=' + product.productImages[0].filename : '' }}">
+      </td>
+    <td><a [routerLink]="['/product-edit', product.id]" class="btn btn-primary">اصلاح</a></td>
+    <td><a routerLink="" class="btn btn-danger">حذف</a></td>
   </tr>
   </tbody>
 </table>

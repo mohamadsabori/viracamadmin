@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from "../model/product";
+import {Product} from '../model/product';
+import {ViracamserviceService} from '../viracamservice.service';
 
 @Component({
   selector: 'app-productindex',
@@ -8,7 +9,17 @@ import {Product} from "../model/product";
 })
 export class ProductindexComponent implements OnInit {
   products: Array<Product>;
-  constructor() { }
+  constructor(private service: ViracamserviceService ) {
+    this.service.loadAllProducts().subscribe(
+      res => {
+        this.products = res.json();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+  }
 
   ngOnInit() {
   }

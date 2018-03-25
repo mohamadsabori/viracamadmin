@@ -1,11 +1,11 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {Product} from "../model/product";
-import {ProductImages} from "../model/productImages";
-import {ProductProperties} from "../model/productProperties";
-import {ProductCategory} from "../model/productCategory";
-import {ViracamserviceService} from "../viracamservice.service";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Product} from '../model/product';
+import {ProductImages} from '../model/productImages';
+import {ProductProperties} from '../model/productProperties';
+import {ProductCategory} from '../model/productCategory';
+import {ViracamserviceService} from '../viracamservice.service';
+import {UploadImageService} from '../services/upload-image.service';
 
 
 @Component({
@@ -18,13 +18,14 @@ export class ProductcreateComponent implements OnInit {
   newProduct: Product;
   angForm: FormGroup;
   productTypes: Array<ProductCategory>;
+  productAdded = false;
 
-  constructor(private router: Router, private fb: FormBuilder, private service: ViracamserviceService) {
+  constructor(private fb: FormBuilder, private service: ViracamserviceService, public uploadImageService: UploadImageService) {
     this.createForm();
     this.productTypes = new Array();
     this.service.loadAllPRoductTypes().subscribe(data => {
       this.productTypes = data.json();
-    },error2 => {
+    }, error2 => {
       console.log(error2);
     });
   }
@@ -34,7 +35,7 @@ export class ProductcreateComponent implements OnInit {
       name: ['', Validators.required],
       cost: ['', Validators.required],
       productCode: ['', Validators.required],
-      productType: ['',Validators.required],
+      productType: ['', Validators.required],
       description: ['', Validators.required]
     });
     this.newProduct = new Product();
@@ -51,7 +52,7 @@ export class ProductcreateComponent implements OnInit {
         console.log('ID by JSON parse=' + JSON.parse(JSON.parse(JSON.stringify(res))._body).id);
         this.uploadImageService.upload(res.json()['id']);
         this.productAdded = true;
-        this.newProduct = new Product('', '', '');
+        this.newProduct = new Product();
       },
       error => {
         console.log(error);
@@ -73,5 +74,16 @@ export class ProductcreateComponent implements OnInit {
 
   clearImage(id) {
     this.newProduct.productImages.splice(id, 1);
+  }
+
+  addProductDescription(fileInput: any, index) {
+    console.log(fileInput.target.value);
+    this.newProduct.productProperties[index].value = fileInput.target.value;
+  }
+
+  setImageValue (fileInput: any, i) {
+    uploadImageService.fileChangeEvent(fileInput);
+    this.newProduct.productImages[i].filename = fileInput.target.files[0].name;
+    this.newProduct.productImages[i].photo = fileInput.target.files[0].file;
   }
 }
