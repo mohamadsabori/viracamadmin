@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ProductOrder} from '../model/productOrder';
+import {ViracamserviceService} from '../viracamservice.service';
 
 @Component({
   selector: 'app-orderindex',
@@ -6,8 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./orderindex.component.css']
 })
 export class OrderindexComponent implements OnInit {
+  userOrders: Array<ProductOrder>;
 
-  constructor() { }
+  constructor(private service: ViracamserviceService) {
+    this.service.loadAllUserOrders().subscribe(
+      data => {
+        this.userOrders = data.json();
+      }, error => {
+        console.log(error);
+      }
+    )
+    ;
+
+  }
 
   ngOnInit() {
   }

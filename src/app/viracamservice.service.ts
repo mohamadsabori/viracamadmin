@@ -18,4 +18,12 @@ export class ViracamserviceService {
   loadAllProducts() {
     return this.http.get(this.baseUrl + '/product/loadAllProducts');
   }
+
+  loadProduct(id) {
+    return this.http.get(this.baseUrl + '/product/loadProductById?id=' + id);
+  }
+
+  loadAllUserOrders() {
+    return this.http.get(this.baseUrl + '/productorder/loadalluserorders');
+  }
 }

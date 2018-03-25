@@ -46,6 +46,7 @@ export class ProducteditComponent implements OnInit {
         this.service.loadProduct(id).subscribe(data => {
             this.newProduct = data.json();
           }, error => {
+            console.log(error);
           }
         );
       }

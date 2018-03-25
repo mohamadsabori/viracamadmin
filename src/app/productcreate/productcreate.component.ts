@@ -82,7 +82,7 @@ export class ProductcreateComponent implements OnInit {
   }
 
   setImageValue (fileInput: any, i) {
-    uploadImageService.fileChangeEvent(fileInput);
+    this.uploadImageService.fileChangeEvent(fileInput);
     this.newProduct.productImages[i].filename = fileInput.target.files[0].name;
     this.newProduct.productImages[i].photo = fileInput.target.files[0].file;
   }
