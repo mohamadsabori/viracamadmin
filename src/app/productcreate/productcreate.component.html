@@ -79,8 +79,11 @@
               <button class="btn btn-primary" (click)="addNewPicture()">افزودن تصویر</button>
               <table>
                 <tr *ngFor="let imgs of newProduct.productImages; let i = index">
-                  <td><input type="file" id="productImage" name="productImage" formControlName="productImage"
-                             #productImage [(ngModel)]="imgs.photo"/></td>
+                  <td>
+                    <input type="file" id="productImage" name="productImage" formControlName="productImage" (change)="setImageValue($event,i)"
+                             #productImage />
+                  <img  [(ngModel)]="imgs.photo">
+                  </td>
                   <td>
                   </td>
                   <td>
@@ -95,7 +98,8 @@
                 <tr *ngFor="let properties of newProduct.productProperties; let i = index">
                   <td>
                     <input type="text" class="form-control" formControlName="productProperties" #productProperties
-                           id="productProperties" name="productProperties" [(ngModel)]="properties.value"/>
+                           id="productProperties" name="productProperties" [(ngModel)]="properties.value"
+                           (change)="addProductDescription($event,i)"/>
                   </td>
                   <td>
                     <button class="alert-danger" (click)="clearProperty(i)">حذف</button>
