@@ -23,11 +23,6 @@ export class ProductcreateComponent implements OnInit {
   constructor(private fb: FormBuilder, private service: ViracamserviceService, public uploadImageService: UploadImageService) {
     this.createForm();
     this.productTypes = new Array();
-    this.service.loadAllPRoductTypes().subscribe(data => {
-      this.productTypes = data.json();
-    }, error2 => {
-      console.log(error2);
-    });
   }
 
   createForm() {
@@ -38,7 +33,12 @@ export class ProductcreateComponent implements OnInit {
       productType: ['', Validators.required],
       description: ['', Validators.required]
     });
-    this.newProduct = new Product();
+    this.service.loadAllPRoductTypes().subscribe(data => {
+      this.productTypes = data.json();
+    }, error2 => {
+      console.log(error2);
+    });
+
   }
 
 

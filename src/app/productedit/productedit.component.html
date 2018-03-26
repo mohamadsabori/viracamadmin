@@ -54,7 +54,9 @@
                 <tr *ngFor="let imgs of newProduct.productImages; let i = index">
                   <td>
                     <input type="file" id="productImage" name="productImage" formControlName="productImage" (change)="uploadImageService.fileChangeEvent($event)"
-                           #productImage /></td>
+                           #productImage />
+                  <img width="100px" src="{{'http://localhost:8080/ViraCamServer/product/files?id=' + newProduct.id + '&filename=' + imgs.filename }}">
+                  </td>
                   <td>
                   </td>
                   <td>
@@ -80,8 +82,8 @@
             </td>
             <td style="width:30%;vertical-align: top;">
               <div *ngFor="let type of productTypes; let i = index">
-                <input value="{{ type.id }}" type="radio" name="productType" formControlName="productType"
-                       #productType [(ngModel)]="newProduct.category.id">
+                <input type="radio" name="productType" formControlName="productType"
+                       #productType [(ngModel)]="newProduct.category.id" checked="{{ type.id == newProduct.category.id ? 'checked' : ''}}"/>
                 {{ type.categoryName }}
               </div>
             </td>

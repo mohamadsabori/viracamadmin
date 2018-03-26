@@ -5,8 +5,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Product} from '../model/product';
 import {ProductCategory} from '../model/productCategory';
 import {ActivatedRoute} from '@angular/router';
-import {ProductImages} from "../model/productImages";
-import {ProductProperties} from "../model/productProperties";
+import {ProductImages} from '../model/productImages';
+import {ProductProperties} from '../model/productProperties';
 
 @Component({
   selector: 'app-productedit',
@@ -22,38 +22,43 @@ export class ProducteditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder
     , private service: ViracamserviceService, public uploadImageService: UploadImageService) {
-    this.createForm();
-    this.productTypes = new Array();
-    this.service.loadAllPRoductTypes().subscribe(data => {
-      this.productTypes = data.json();
-    }, error2 => {
-      console.log(error2);
-    });
   }
 
   ngOnInit() {
-  }
-
-  createForm() {
     this.angForm = this.fb.group({
       name: ['', Validators.required],
       cost: ['', Validators.required],
       productCode: ['', Validators.required],
       productType: ['', Validators.required],
+      productImage: ['', Validators.required],
+      productProperties: ['', Validators.required],
       description: ['', Validators.required]
     });
+    this.createForm();
+  }
+
+  createForm() {
+    this.productTypes = new Array();
+    this.newProduct = new Product();
+    this.service.loadAllPRoductTypes().subscribe(data => {
+      this.productTypes = data.json();
+    }, error2 => {
+      console.log(error2);
+    });
+
     this.route.params.subscribe(params => {
       const id = params['id'];
       if (id) {
-        this.service.loadProduct(id).subscribe(data => {
-            this.newProduct = data.json();
+        this.service.loadProduct(id).subscribe(productData => {
+            this.newProduct = productData.json();
           }, error => {
             console.log(error);
           }
         );
-      }
+     }
     });
   }
+
   addNewPicture() {
     this.newProduct.productImages.push(new ProductImages());
   }
@@ -75,6 +80,19 @@ export class ProducteditComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  addProductDescription(fileInput: any, index) {
+    console.log(fileInput.target.value);
+    this.newProduct.productProperties[index].value = fileInput.target.value;
+  }
+
+  clearImage(id) {
+    this.newProduct.productImages.splice(id, 1);
+  }
+
+  clearProperty(i) {
+    this.newProduct.productProperties.splice(i, 1);
   }
 
 

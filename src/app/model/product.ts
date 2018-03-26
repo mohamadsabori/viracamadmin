@@ -4,7 +4,7 @@ import {ProductCategory} from "./productCategory";
 /**
  * Created by Mohamad on 3/22/2018.
  */
-export class Product{
+export class Product {
   name: string;
   cost: string;
   description: string;
