@@ -5,6 +5,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Product} from '../model/product';
 import {ProductCategory} from '../model/productCategory';
 import {ActivatedRoute} from '@angular/router';
+import {ProductImages} from "../model/productImages";
+import {ProductProperties} from "../model/productProperties";
 
 @Component({
   selector: 'app-productedit',
@@ -52,5 +54,28 @@ export class ProducteditComponent implements OnInit {
       }
     });
   }
+  addNewPicture() {
+    this.newProduct.productImages.push(new ProductImages());
+  }
+
+  addNewProperties() {
+    this.newProduct.productProperties.push(new ProductProperties());
+  }
+
+  saveProduct() {
+    this.service.saveProduct(this.newProduct).subscribe(
+      res => {
+        console.log('result is ' + res.json());
+        console.log('ID by JSON parse=' + JSON.parse(JSON.parse(JSON.stringify(res))._body).id);
+        this.uploadImageService.upload(res.json()['id']);
+        this.productAdded = true;
+        this.newProduct = new Product();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 
 }
