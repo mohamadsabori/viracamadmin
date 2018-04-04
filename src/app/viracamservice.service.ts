@@ -26,4 +26,8 @@ export class ViracamserviceService {
   loadAllUserOrders() {
     return this.http.get(this.baseUrl + '/productorder/loadalluserorders');
   }
+
+  loadAllUsers() {
+    return this.http.get(this.baseUrl + '/users/loadallusers');
+  }
 }
