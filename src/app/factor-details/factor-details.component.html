@@ -3,36 +3,47 @@
     <table class="table table-striped table-bordered">
       <thead>
       <th></th>
+      <th>عنوان</th>
+      <th>تعداد</th>
+      <th>جمع</th>
       </thead>
       <tbody>
       <tr *ngFor="let item of newOrder.orderset">
-        <td><img src="{{item.product.productImages != null ? 'http://localhost:8080/ViraCamServer/product/files?id=' + item.product.id + '&filename=' + item.product.productImages[0].filename : ''}}"></td>
+        <td><img
+          src="{{item.product.productImages != null ? 'http://176.31.82.40:8080/ViraCamServer/product/files?id=' + item.product.id + '&filename=' + item.product.productImages[0].filename : ''}}">
+        </td>
         <td>{{item.product.name}}</td>
-        <td>تعداد {{item.qty}}</td>
-        <td>جمع {{item.totalPrice}}</td>
+        <td> {{item.qty}}</td>
+        <td> {{item.totalPrice}}</td>
       </tr>
       </tbody>
     </table>
-      <div>اطلاعات مشتری</div>
-      <div>
-        <div>نام کاربری</div>
-        <div>{{newOrder.userFullName}}</div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        اطلاعات مشتری
       </div>
-      <div>
-        <div>شماره موبایل</div>
-        <div>{{newOrder.userPhoneNumber}}</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col-md-4">نام کاربری</label>
+          <input type="text" value="{{newOrder.userFullName}}" disabled/>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">شماره موبایل</label>
+          <input type="text" value="{{newOrder.userPhoneNumber}}" disabled/>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">آدرس</label>
+          <input type="text" value="{{newOrder.userAddress}}" disabled/>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">شیوه حمل</label>
+          <input type="text" value="{{newOrder.shippingMethod.value}}" disabled/>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4">آدرس محل</label>
+          <input type="text" value="{{newOrder.shippingMethodDetails}}" disabled/>
+        </div>
       </div>
-      <div>
-        <div >آدرس</div>
-        <div >{{newOrder.userAddress}}</div>
-      </div>
-    <div>
-      <div>شیوه حمل</div>
-      <div>{{newOrder.shippingMethod.value}}</div>
-    </div>
-    <div>
-      <div >آدرس محل</div>
-      <div >{{newOrder.shippingMethodDetails}}</div>
     </div>
   </div>
 </div>

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'yagut';
+  src: url('./assets/font/Baran.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+body{
+  font-family: yagut !important;
+}
+html{
+  font-family: yagut !important;
+  font-size: large;
+}

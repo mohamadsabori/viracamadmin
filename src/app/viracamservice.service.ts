@@ -3,8 +3,8 @@ import {Http} from '@angular/http';
 import {Product} from './model/product';
 @Injectable()
 export class ViracamserviceService {
-  private baseUrl: String = '/ViraCamServer';
-  // private baseUrl: String = 'http://176.31.82.40:8080/ViraCamServer';
+  // private baseUrl: String = '/ViraCamServer';
+  private baseUrl: String = 'http://176.31.82.40:8080/ViraCamServer';
   constructor(private http: Http) {
   }
 
