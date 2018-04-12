@@ -37,14 +37,14 @@ export class ViracamserviceService {
   }
 
   loadFactorDetails(id) {
-    return this.http.get(this.baseUrl + '/userorder/loadallusersordersbyid?id=' + id);
+    return this.http.get(this.baseUrl + '/userorder/loadallusersordersbyid/' + id);
   }
 
   confirmOrder(id) {
-    return this.http.get(this.baseUrl + '/userorder/confirmOrder?id=' + id);
+    return this.http.get(this.baseUrl + '/userorder/confirmOrder/' + id);
   }
 
   cancelOrder(id) {
-    return this.http.get(this.baseUrl + '/userorder/cancelOrder?id=' + id);
+    return this.http.get(this.baseUrl + '/userorder/cancelOrder/' + id);
   }
 }

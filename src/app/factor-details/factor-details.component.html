@@ -1,3 +1,38 @@
-<p>
-  factor-details works!
-</p>
+<div>
+  <div padding style="text-align: right;">
+    <table>
+      <thead>
+      <th></th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of newOrder.orderset">
+        <td><img src="{{item.product.productImages != null ? item.product.productImages[0].filename : ''}}"></td>
+        <td>{{item.product.name}}</td>
+        <td>تعداد {{item.qty}}</td>
+        <td>جمع {{item.totalPrice}}</td>
+      </tr>
+      </tbody>
+    </table>
+      <div>اطلاعات مشتری</div>
+      <div>
+        <div>نام کاربری</div>
+        <div>{{newOrder.userFullName}}</div>
+      </div>
+      <div>
+        <div>شماره موبایل</div>
+        <div>{{newOrder.userPhoneNumber}}</div>
+      </div>
+      <div>
+        <div >آدرس</div>
+        <div >{{newOrder.userAddress}}</div>
+      </div>
+    <div>
+      <div>شیوه حمل</div>
+      <div>{{newOrder.shippingMethod.value}}</div>
+    </div>
+    <div>
+      <div >آدرس محل</div>
+      <div >{{newOrder.shippingMethodDetails}}</div>
+    </div>
+  </div>
+</div>

@@ -9,23 +9,30 @@ import {UserOrder} from '../model/userOrder';
   styleUrls: ['./factor-details.component.css']
 })
 export class FactorDetailsComponent implements OnInit {
-  userOrder: UserOrder;
+  newOrder: UserOrder;
 
   constructor(private route: ActivatedRoute, private service: ViracamserviceService) {
-  }
-
-  ngOnInit() {
+/*
+    this.route.params.subscribe(params => {
+      this.newOrder = params['id'];
+    });
+*/
     this.route.params.subscribe(params => {
       const id = params['id'];
       if (id) {
         this.service.loadFactorDetails(id).subscribe(data => {
             this.userOrder = data.json();
+            debugger;
           }, error => {
             console.log(error);
           }
         );
       }
-    })
+    });
+    // this.newOrder = new UserOrder();
+  }
+
+  ngOnInit() {
   }
 
 }
