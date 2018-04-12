@@ -21,8 +21,7 @@ export class FactorDetailsComponent implements OnInit {
       const id = params['id'];
       if (id) {
         this.service.loadFactorDetails(id).subscribe(data => {
-            this.userOrder = data.json();
-            debugger;
+            this.newOrder = data.json();
           }, error => {
             console.log(error);
           }
