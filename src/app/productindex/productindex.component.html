@@ -14,7 +14,7 @@
     <td>{{ product.productCode }}</td>
     <td>{{ product.name }}</td>
     <td>{{ product.cost }}</td>
-    <td><img width="100px" src="{{ product.productImages.length !=0 ? 'http://localhost:8080/ViraCamServer/product/files?id=' + product.id +
+    <td><img width="100px" src="{{ product.productImages.length !=0 ? 'http://176.31.82.40:8080/ViraCamServer/product/files?id=' + product.id +
       '&filename=' + product.productImages[0].filename : '' }}">
       </td>
     <td><a [routerLink]="['/product-edit', product.id]" class="btn btn-primary">اصلاح</a></td>

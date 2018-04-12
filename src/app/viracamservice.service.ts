@@ -3,7 +3,8 @@ import {Http} from '@angular/http';
 import {Product} from './model/product';
 @Injectable()
 export class ViracamserviceService {
-  private baseUrl: String = '/ViraCamServer';
+  // private baseUrl: String = '/ViraCamServer';
+  private baseUrl: String = 'http://176.31.82.40:8080/ViraCamServer';
   constructor(private http: Http) {
   }
 
@@ -29,5 +30,21 @@ export class ViracamserviceService {
 
   loadAllUsers() {
     return this.http.get(this.baseUrl + '/users/loadallusers');
+  }
+
+  loadAllUsersOrders() {
+    return this.http.get(this.baseUrl + '/userorder/loadallusersorders');
+  }
+
+  loadFactorDetails(id) {
+    return this.http.get(this.baseUrl + '/userorder/loadallusersordersbyid?id=' + id);
+  }
+
+  confirmOrder(id) {
+    return this.http.get(this.baseUrl + '/userorder/confirmOrder?id=' + id);
+  }
+
+  cancelOrder(id) {
+    return this.http.get(this.baseUrl + '/userorder/cancelOrder?id=' + id);
   }
 }

@@ -16,6 +16,7 @@ import {ProductcreateComponent} from './productcreate/productcreate.component';
 import {ProductindexComponent} from './productindex/productindex.component';
 import {UserindexComponent} from './userindex/userindex.component';
 import {ViracamserviceService} from './viracamservice.service';
+import { FactorDetailsComponent } from './factor-details/factor-details.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
@@ -38,6 +39,10 @@ const appRoutes: Routes = [
   {
     path: 'order-list',
     component: OrderindexComponent
+  },
+  {
+    path: 'factor-details/:id',
+    component: FactorDetailsComponent
   }
 
 ];
@@ -49,7 +54,8 @@ const appRoutes: Routes = [
     ProductcreateComponent,
     ProducteditComponent,
     UserindexComponent,
-    OrderindexComponent
+    OrderindexComponent,
+    FactorDetailsComponent
   ],
   imports: [
     CommonModule,

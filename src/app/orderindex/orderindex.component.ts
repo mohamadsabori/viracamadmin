@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductOrder} from '../model/productOrder';
 import {ViracamserviceService} from '../viracamservice.service';
+import {UserOrder} from '../model/userOrder';
 
 @Component({
   selector: 'app-orderindex',
@@ -8,21 +8,41 @@ import {ViracamserviceService} from '../viracamservice.service';
   styleUrls: ['./orderindex.component.css']
 })
 export class OrderindexComponent implements OnInit {
-  userOrders: Array<ProductOrder>;
+  userOrders: Array<UserOrder>;
 
   constructor(private service: ViracamserviceService) {
-    this.service.loadAllUserOrders().subscribe(
+    this.service.loadAllUsersOrders().subscribe(
       data => {
         this.userOrders = data.json();
+        console.log(data.json());
       }, error => {
         console.log(error);
       }
-    )
-    ;
+    );
+
 
   }
 
   ngOnInit() {
   }
-
+  confirmOrder(id: any){
+    this.service.confirmOrder(id).subscribe(
+      data => {
+        this.userOrders = data.json();
+        console.log(data.json());
+      }, error => {
+        console.log(error);
+      }
+    )
+  }
+  cancelOrder(id: any){
+    this.service.cancelOrder(id).subscribe(
+      data => {
+        this.userOrders = data.json();
+        console.log(data.json());
+      }, error => {
+        console.log(error);
+      }
+    )
+  }
 }

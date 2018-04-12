@@ -1,32 +1,34 @@
 <table class="table table-striped table-bordered">
   <thead>
   <tr>
-    <td>کد</td>
-    <td>عنوان</td>
-    <td>تعداد</td>
-    <td>قیمت کل</td>
-    <td>قیمت</td>
+    <td>شماره فاکتور</td>
     <td>نام مشتری</td>
-    <td>شماره مشتری</td>
-    <td>تصویر</td>
-    <td colspan="2">عملیات</td>
+    <td>شماره تماس</td>
+    <td>تاریخ سفارش</td>
+    <td>محل باربری/ترمینال</td>
+    <td>کل فاکتور</td>
+    <td>نحوه حمل</td>
+    <td>وضعیت فاکتور</td>
+    <td colspan="3">عملیات</td>
   </tr>
   </thead>
 
   <tbody>
   <tr *ngFor="let userOrder of userOrders">
-    <td>{{ userOrder.product.productCode }}</td>
-    <td>{{ userOrder.product.name }}</td>
-    <td>{{ userOrder.qty }}</td>
-    <td>{{ userOrder.totalPrice }}</td>
-    <td>{{ userOrder.product.cost }}</td>
-    <td>{{ userOrder.user.userName }}</td>
-    <td>{{ userOrder.user.userPhoneNumber }}</td>
-    <td><img width="100px" src="{{ userOrder.product.productImages.length !=0 ? 'http://localhost:8080/ViraCamServer/product/files?id=' + userOrder.product.id +
-      '&filename=' + userOrder.product.productImages[0].filename : '' }}">
-    </td>
-    <td><a [routerLink]="['/product-edit', userOrder.product.id]" class="btn btn-primary">تایید</a></td>
-    <td><a routerLink="" class="btn btn-danger">لغو سفارش</a></td>
+    <td>{{ userOrder.orderSerial}}</td>
+    <td>{{ userOrder.userFullName }}</td>
+    <td>{{ userOrder.userPhoneNumber }}</td>
+    <td>{{ userOrder.orderDate }}</td>
+    <td>{{ userOrder.shippingMethodDetails }}</td>
+    <td>{{ userOrder.totalFactor }}</td>
+    <td>{{ userOrder.shippingMethod != null ? userOrder.shippingMethod.value : "نامشخص" }}</td>
+    <td>{{ userOrder.orderStatus != null ? userOrder.orderStatus.value : "نامشخص" }}</td>
+    <!--<td><img width="100px" src="{{ userOrder.product.productImages.length !=0 ? 'http://176.31.82.40:8080/ViraCamServer/product/files?id=' + userOrder.product.id +-->
+      <!--'&filename=' + userOrder.product.productImages[0].filename : '' }}">-->
+    <!--</td>-->
+    <td><a [routerLink]="['/factor-details', userOrder.id]" class="btn btn-primary">جزییات</a></td>
+    <td><a (click)="confirmOrder(userOrder.id)" class="btn btn-primary">تایید</a></td>
+    <td><a (click)="cancelOrder(userOrder.id)" class="btn btn-danger">لغو سفارش</a></td>
   </tr>
   </tbody>
 </table>
