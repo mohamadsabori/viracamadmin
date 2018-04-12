@@ -21,6 +21,7 @@ export class ProductcreateComponent implements OnInit {
   productAdded = false;
 
   constructor(private fb: FormBuilder, private service: ViracamserviceService, public uploadImageService: UploadImageService) {
+    this.newProduct = new Product();
     this.createForm();
     this.productTypes = new Array();
   }
