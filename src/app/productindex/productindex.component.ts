@@ -24,4 +24,15 @@ export class ProductindexComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteProduct(id: any) {
+    this.service.deleteProduct(id).subscribe(
+      data => {
+        this.products = data.json();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 }

@@ -18,7 +18,7 @@
       '&filename=' + product.productImages[0].filename : '' }}">
       </td>
     <td><a [routerLink]="['/product-edit', product.id]" class="btn btn-primary">اصلاح</a></td>
-    <td><a routerLink="" class="btn btn-danger">حذف</a></td>
+    <td><a (click)="deleteProduct(product.id)" class="btn btn-danger">حذف</a></td>
   </tr>
   </tbody>
 </table>

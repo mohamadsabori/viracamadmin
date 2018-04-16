@@ -25,13 +25,24 @@ export class ProducteditComponent implements OnInit {
   }
 
   ngOnInit() {
+/*
+    this.angForm = this.fb.group({
+      name: '',
+      cost: '',
+      productCode: '',
+      productType: '',
+      productImage: '',
+      productProperties: '',
+      description: ''
+    });
+*/
     this.angForm = this.fb.group({
       name: ['', Validators.required],
       cost: ['', Validators.required],
       productCode: ['', Validators.required],
-      productType: ['', Validators.required],
-      productImage: ['', Validators.required],
-      productProperties: ['', Validators.required],
+      productType: '',
+      productImage: '',
+      productProperties: '',
       description: ['', Validators.required]
     });
     this.createForm();
