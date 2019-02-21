@@ -43,6 +43,8 @@ export class ProducteditComponent implements OnInit {
       productType: '',
       productImage: '',
       productProperties: '',
+      discount: '',
+      discountCondition: '',
       description: ['', Validators.required]
     });
     this.createForm();
@@ -81,8 +83,6 @@ export class ProducteditComponent implements OnInit {
   saveProduct() {
     this.service.saveProduct(this.newProduct).subscribe(
       res => {
-        console.log('result is ' + res.json());
-        console.log('ID by JSON parse=' + JSON.parse(JSON.parse(JSON.stringify(res))._body).id);
         this.uploadImageService.upload(res.json()['id']);
         this.productAdded = true;
         this.newProduct = new Product();

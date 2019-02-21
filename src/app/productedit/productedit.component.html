@@ -31,6 +31,14 @@
         <div *ngIf="angForm.controls['cost'].errors.required">قیمت کالا اجباری می باشد.</div>
       </div>
       <div class="form-group">
+        <label class="col-md-4">تعداد تخفیف</label>
+        <input type="text" class="form-control" formControlName="discountCondition" #discountCondition [(ngModel)]="newProduct.discountCondition"/>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">مبلغ تخفیف</label>
+        <input type="text" class="form-control" formControlName="discount" #discount [(ngModel)]="newProduct.discount"/>
+      </div>
+      <div class="form-group">
         <label class="col-md-4">شرح کالا</label>
         <textarea class="form-control" formControlName="description" #description
                   [(ngModel)]="newProduct.description"></textarea>
@@ -71,8 +79,8 @@
                 <tr *ngFor="let properties of newProduct.productProperties; let i = index">
                   <td>
                     <input type="text" class="form-control" formControlName="productProperties" #productProperties
-                           id="productProperties" name="productProperties" [(ngModel)]="properties.value"
-                           (change)="addProductDescription($event,i)"/>
+                           name="productProperties"
+                           (change)="addProductDescription($event,i)" value="{{properties.value}}"/>
                   </td>
                   <td>
                     <button class="alert-danger" (click)="clearProperty(i)">حذف</button>
