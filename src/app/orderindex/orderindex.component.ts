@@ -14,7 +14,6 @@ export class OrderindexComponent implements OnInit {
     this.service.loadAllUsersOrders().subscribe(
       data => {
         this.userOrders = data.json();
-        console.log(data.json());
       }, error => {
         console.log(error);
       }
@@ -25,7 +24,7 @@ export class OrderindexComponent implements OnInit {
 
   ngOnInit() {
   }
-  confirmOrder(id: any){
+  confirmOrder(id: any) {
     this.service.confirmOrder(id).subscribe(
       data => {
         this.userOrders = data.json();
@@ -33,9 +32,9 @@ export class OrderindexComponent implements OnInit {
       }, error => {
         console.log(error);
       }
-    )
+    );
   }
-  cancelOrder(id: any){
+  cancelOrder(id: any) {
     this.service.cancelOrder(id).subscribe(
       data => {
         this.userOrders = data.json();
@@ -43,6 +42,6 @@ export class OrderindexComponent implements OnInit {
       }, error => {
         console.log(error);
       }
-    )
+    );
   }
 }

@@ -13,6 +13,8 @@ export class Product {
   productImages: Array<ProductImages>;
   productProperties: Array<ProductProperties>;
   category: ProductCategory;
+  discountCondition: string;
+  discount: string;
 
   constructor() {
   this.productImages = new Array();

@@ -17,6 +17,8 @@ import {ProductindexComponent} from './productindex/productindex.component';
 import {UserindexComponent} from './userindex/userindex.component';
 import {ViracamserviceService} from './viracamservice.service';
 import { FactorDetailsComponent } from './factor-details/factor-details.component';
+import { LoginComponent } from './login/login.component';
+import {CookieService} from "ngx-cookie-service";
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
@@ -43,6 +45,10 @@ const appRoutes: Routes = [
   {
     path: 'factor-details/:id',
     component: FactorDetailsComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 
 ];
@@ -55,7 +61,8 @@ const appRoutes: Routes = [
     ProducteditComponent,
     UserindexComponent,
     OrderindexComponent,
-    FactorDetailsComponent
+    FactorDetailsComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +72,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     ReactiveFormsModule
   ],
-  providers: [ProductserviceService, UploadImageService, OrderServiceService, ViracamserviceService],
+  providers: [ProductserviceService, UploadImageService, OrderServiceService, ViracamserviceService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -5,11 +5,12 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Vira Cam Admin</a>
     </div>
-    <ul class="nav navbar-nav">
+    <ul class="nav navbar-nav" *ngIf="loggedIn === 'true'">
       <li><a href="#" [routerLink]="['/product-list']">لیست محصولات</a></li>
       <li><a href="#" [routerLink]="['/product-add']">ایجاد کالا</a></li>
       <li><a href="#" [routerLink]="['/order-list']">لیست سفارشات</a></li>
       <li><a href="#" [routerLink]="['/user-list']">لیست کاربران</a></li>
+      <li><a href="#" (click)="logOut()">خروج</a></li>
     </ul>
   </div>
 </nav>

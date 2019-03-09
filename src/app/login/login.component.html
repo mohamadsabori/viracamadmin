@@ -1,0 +1,15 @@
+<div class="container" dir="rtl">
+  <div class="form-group arrow_box login">
+    <h2>ورود</h2>
+    <div class="input-container">
+      <i class="fa fa-mobile icon"></i>
+      <input class="input-field" type="text" placeholder="نام کاربری" name="mobile" [(ngModel)]="mobile">
+    </div>
+    <div class="input-container">
+      <i class="fa fa-lock icon"></i>
+      <input class="input-field" type="password" placeholder="کلمه عبور" name="password" [(ngModel)]="password">
+    </div>
+    <button ion-button full (click)="login()">ورود</button>
+  </div>
+</div>
+
