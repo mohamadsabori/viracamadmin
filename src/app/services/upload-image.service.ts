@@ -1,17 +1,16 @@
 import {Injectable} from '@angular/core';
+import {ViracamserviceService} from '../viracamservice.service';
 
 @Injectable()
 export class UploadImageService {
-  private baseUrl: String = '/ViraCamServer';
   filesToUpload: Array<File>;
 
-  constructor() {
+  constructor(private service: ViracamserviceService) {
     this.filesToUpload = [];
   }
 
   upload(productId: number) {
-    console.log('Start upload to server');
-    this.makeFileRequest(this.baseUrl + '/product/add/image?id=' + productId, [], this.filesToUpload).then(
+    this.makeFileRequest(this.service.baseUrl + '/product/add/image?id=' + productId, [], this.filesToUpload).then(
       (result) => {
         console.log(result);
       }, (error) => {
