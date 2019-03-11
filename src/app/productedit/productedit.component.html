@@ -4,7 +4,7 @@
   <div class="panel-body">
     <form [formGroup]="angForm" novalidate >
       <div class="form-group">
-        <label class="col-md-4">کد کالا</label>
+        <label class="col-md-12">کد کالا</label>
         <input type="text" class="form-control" formControlName="productCode" #productCode [(ngModel)]="newProduct.productCode"/>
       </div>
       <div
@@ -13,7 +13,7 @@
         <div *ngIf="angForm.controls['productCode'].errors.required">کد کالا اجباری می باشد.</div>
       </div>
       <div class="form-group">
-        <label class="col-md-4">عنوان کالا</label>
+        <label class="col-md-12">عنوان کالا</label>
         <input type="text" class="form-control" formControlName="name" #name [(ngModel)]="newProduct.name"/>
       </div>
       <div
@@ -22,7 +22,7 @@
         <div *ngIf="angForm.controls['name'].errors.required">عنوان کالا اجباری می باشد.</div>
       </div>
       <div class="form-group">
-        <label class="col-md-4">قیمت کالا</label>
+        <label class="col-md-12">قیمت کالا</label>
         <input type="text" class="form-control" formControlName="cost" #cost [(ngModel)]="newProduct.cost"/>
       </div>
       <div
@@ -31,15 +31,15 @@
         <div *ngIf="angForm.controls['cost'].errors.required">قیمت کالا اجباری می باشد.</div>
       </div>
       <div class="form-group">
-        <label class="col-md-4">تعداد تخفیف</label>
+        <label class="col-md-12">تعداد تخفیف</label>
         <input type="text" class="form-control" formControlName="discountCondition" #discountCondition [(ngModel)]="newProduct.discountCondition"/>
       </div>
       <div class="form-group">
-        <label class="col-md-4">مبلغ تخفیف</label>
+        <label class="col-md-12">مبلغ تخفیف</label>
         <input type="text" class="form-control" formControlName="discount" #discount [(ngModel)]="newProduct.discount"/>
       </div>
       <div class="form-group">
-        <label class="col-md-4">شرح کالا</label>
+        <label class="col-md-12">شرح کالا</label>
         <textarea class="form-control" formControlName="description" #description
                   [(ngModel)]="newProduct.description"></textarea>
 
@@ -63,7 +63,7 @@
                   <td>
                     <input type="file" id="productImage" name="productImage" formControlName="productImage" (change)="uploadImageService.fileChangeEvent($event)"
                            #productImage />
-                  <img width="100px" src="{{'http://localhost:8080/ViraCamServer/product/files?id=' + newProduct.id + '&filename=' + imgs.filename }}">
+                  <img width="100px" src="{{service.baseUrl + '/product/files?id=' + newProduct.id + '&filename=' + imgs.filename }}">
                   </td>
                   <td>
                   </td>
